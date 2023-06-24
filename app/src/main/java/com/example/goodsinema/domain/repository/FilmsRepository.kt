@@ -5,6 +5,6 @@ import com.example.goodsinema.utills.Resource
 
 interface FilmsRepository {
 
-    suspend fun getFilms(): Resource<FilmsDto>
+    suspend fun getFilms(): FilmsDto
 
 }

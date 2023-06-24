@@ -11,17 +11,8 @@ class FilmsRepositoryImpl @Inject constructor(
     private val api: CinemaApi
 ) : FilmsRepository {
 
-    override suspend fun getFilms(): Resource<FilmsDto> {
-        return try {
-            Resource.Success(
-                data = api.getListFilms(Constant.KEY_API)
-            )
-        } catch (e: Exception) {
-            e.printStackTrace()
-            Resource.Error(
-                message = e.message ?: "An unknown error occurred."
-            )
-        }
+    override suspend fun getFilms(): FilmsDto {
+        return api.getListFilms(Constant.KEY_API)
 
     }
 }

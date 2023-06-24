@@ -1,9 +1,9 @@
 package com.example.goodsinema.presentation.list_films
 
-import com.example.goodsinema.data.model.FilmDto
+import com.example.goodsinema.domain.model.Film
 
 data class ListFilmsState(
     val isLoading: Boolean = false,
-    val films: List<FilmDto> = emptyList(),
+    val films: List<Film> = emptyList(),
     val error: String = ""
 )

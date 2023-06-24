@@ -1,5 +1,7 @@
 package com.example.goodsinema.data.model
 
+import com.example.goodsinema.domain.model.Film
+
 data class FilmDto(
     val adult: Boolean,
     val backdrop_path: String,
@@ -16,3 +18,15 @@ data class FilmDto(
     val vote_average: Double,
     val vote_count: Int
 )
+
+fun FilmDto.toFilm(): Film {
+
+    return Film(
+        id = id,
+        title = original_title,
+        poster = poster_path,
+        dataRelease = release_date,
+        popularity = vote_average,
+        description = overview
+    )
+}
