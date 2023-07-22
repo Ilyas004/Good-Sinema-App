@@ -20,11 +20,12 @@ data class FilmDto(
 )
 
 fun FilmDto.toFilm(): Film {
-
     return Film(
         id = id,
-        title = original_title,
+        title = title,
+        originalTitle = original_title,
         poster = poster_path,
+        background = backdrop_path,
         dataRelease = release_date,
         popularity = vote_average,
         description = overview
