@@ -22,7 +22,11 @@ fun FilmsDisplay(
                         key = "film",
                         value = film
                     )
-                    navController.navigate(Screen.DetailFilmInfo.route)
+                    navController.navigate(Screen.DetailFilmInfo.route) {
+                        popUpTo(Screen.ListFilms.route) {
+                            inclusive = true
+                        }
+                    }
                 }
             )
         }

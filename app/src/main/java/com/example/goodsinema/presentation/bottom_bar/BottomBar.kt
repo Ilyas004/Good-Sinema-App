@@ -1,5 +1,6 @@
 package com.example.goodsinema.presentation.bottom_bar
 
+import android.util.Log
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -14,6 +15,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.example.goodsinema.presentation.Screen
 import com.example.goodsinema.presentation.ui.theme.Black
 import com.example.goodsinema.presentation.ui.theme.Blue
 import com.example.goodsinema.presentation.ui.theme.White
@@ -44,7 +46,25 @@ fun BottomBar(navController: NavController) {
             listItems.forEach { screen ->
                 BottomNavigationItem(
                     selected = currentRoute?.substringBefore("/") == screen.route.substringBefore("/"),
-                    onClick = { navController.navigate(screen.route) },
+                    onClick = {
+                        when (screen.route.substringBefore("/")) {
+                            currentRoute?.substringBefore("/") -> {}
+
+                            Screen.MainScreen.route -> {
+                                navController.popBackStack(navController.graph.startDestinationId, false)
+                            }
+
+                            else -> {
+                                navController.navigate(screen.route) {
+                                    popUpTo(screen.route) {
+                                        inclusive = true
+                                    }
+                                }
+                            }
+
+
+                        }
+                    },
                     icon = {
                         Icon(painter = painterResource(id = screen.icon), contentDescription = "")
                     },

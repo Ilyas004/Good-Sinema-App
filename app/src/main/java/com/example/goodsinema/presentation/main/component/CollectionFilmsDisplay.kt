@@ -57,14 +57,22 @@ fun CollectionFilmsDisplay(
                         viewModel.postBrokerFilms(films)
                         navController.navigate(
                             Screen.ListFilms.route + "/${Constant.GET_BROKER_FILMS}"
-                        )
+                        ) {
+                            popUpTo(Screen.MainScreen.route) {
+                                inclusive = false
+                            }
+                        }
                     },
                     onItemClickPoster = { film ->
                         navController.currentBackStackEntry?.savedStateHandle?.set(
                             key = "film",
                             value = film
                         )
-                        navController.navigate(Screen.DetailFilmInfo.route)
+                        navController.navigate(Screen.DetailFilmInfo.route)  {
+                            popUpTo(Screen.MainScreen.route) {
+                                inclusive = false
+                            }
+                        }
                     }
                 )
 
@@ -81,14 +89,22 @@ fun CollectionFilmsDisplay(
                         viewModel.postBrokerFilms(films)
                         navController.navigate(
                             Screen.ListFilms.route + "/${Constant.GET_BROKER_FILMS}"
-                        )
+                        ) {
+                            popUpTo(Screen.MainScreen.route) {
+                                inclusive = false
+                            }
+                        }
                     },
                     onItemClickPoster = { film ->
                         navController.currentBackStackEntry?.savedStateHandle?.set(
                             key = "film",
                             value = film
                         )
-                        navController.navigate(Screen.DetailFilmInfo.route)
+                        navController.navigate(Screen.DetailFilmInfo.route) {
+                            popUpTo(Screen.MainScreen.route) {
+                                inclusive = false
+                            }
+                        }
                     }
                 )
                 Spacer(modifier = Modifier.height(10.dp))
@@ -104,20 +120,27 @@ fun CollectionFilmsDisplay(
                         viewModel.postBrokerFilms(films)
                         navController.navigate(
                             Screen.ListFilms.route + "/${Constant.GET_BROKER_FILMS}"
-                        )
+                        ) {
+                            popUpTo(Screen.MainScreen.route) {
+                                inclusive = true
+                            }
+                        }
                     },
                     onItemClickPoster = { film ->
                         navController.currentBackStackEntry?.savedStateHandle?.set(
                             key = "film",
                             value = film
                         )
-                        navController.navigate(Screen.DetailFilmInfo.route)
+                        navController.navigate(Screen.DetailFilmInfo.route) {
+                            popUpTo(Screen.DetailFilmInfo.route) {
+                                inclusive = true
+                            }
+                        }
                     }
                 )
                 Spacer(modifier = Modifier.height(20.dp))
             }
         }
-
     })
 
 }
