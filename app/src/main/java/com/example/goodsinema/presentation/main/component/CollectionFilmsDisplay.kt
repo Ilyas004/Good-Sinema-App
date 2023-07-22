@@ -51,7 +51,7 @@ fun CollectionFilmsDisplay(
         stateNowPlayFilms.value.films.let { films ->
             item {
                 MainFilmsDisplay(
-                    films = films,
+                    films = films.take(5),
                     text = "Недавно вышедшие",
                     onItemClickText = {
                         viewModel.postBrokerFilms(films)
@@ -75,7 +75,7 @@ fun CollectionFilmsDisplay(
         stateTopFilms.value.films.let { films ->
             item {
                 MainFilmsDisplay(
-                    films = films,
+                    films = films.take(5),
                     text = "Фильм с высоким рейтингом",
                     onItemClickText = {
                         viewModel.postBrokerFilms(films)
@@ -98,7 +98,7 @@ fun CollectionFilmsDisplay(
         statePopularFilms.value.films.let { films ->
             item {
                 MainFilmsDisplay(
-                    films = films,
+                    films = films.take(5),
                     text = "Популярные",
                     onItemClickText = {
                         viewModel.postBrokerFilms(films)
