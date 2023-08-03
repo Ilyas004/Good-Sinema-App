@@ -25,6 +25,7 @@ fun MainScreen(
     navController: NavController
 ) {
     val state = viewModel.statePopularFilm.collectAsState()
+
     Box(
         modifier = Modifier
             .fillMaxSize()

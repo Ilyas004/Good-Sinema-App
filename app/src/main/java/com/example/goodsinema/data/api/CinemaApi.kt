@@ -1,6 +1,7 @@
 package com.example.goodsinema.data.api
 
 import com.example.goodsinema.data.model.FilmsDto
+import com.example.goodsinema.data.model.NowPlayFilmsDto
 import com.example.goodsinema.utills.Constant
 import org.intellij.lang.annotations.Language
 import retrofit2.http.GET
@@ -24,6 +25,6 @@ interface CinemaApi {
     suspend fun getNowPlayListFilms(
         @Query("language") language: String = "ru",
         @Query("api_key") key: String = Constant.KEY_API
-    ): FilmsDto
+    ): NowPlayFilmsDto
 
 }

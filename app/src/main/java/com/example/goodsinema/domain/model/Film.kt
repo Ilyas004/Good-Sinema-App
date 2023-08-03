@@ -6,15 +6,15 @@ import kotlinx.parcelize.Parcelize
 
 
 @Parcelize
-data class Film (
-    val id: Int = 0,
-    val title: String = "",
-    val originalTitle: String = "",
-    val poster: String = "",
-    val background: String = "",
-    val dataRelease: String = "",
-    val popularity: Double = 0.0,
-    val description: String = ""
+data class Film(
+    val id: Int,
+    val title: String,
+    val originalTitle: String,
+    val poster: String,
+    val background: String? = "",
+    val dataRelease: String,
+    val popularity: Double,
+    val description: String
 ): Parcelable
 
 fun Film.toFilmDB(): FilmDB {
@@ -23,7 +23,7 @@ fun Film.toFilmDB(): FilmDB {
         title = title,
         originalTitle = originalTitle,
         poster = poster,
-        background = background,
+        background = background ?: "",
         dataRelease = dataRelease,
         popularity = popularity,
         description = description
